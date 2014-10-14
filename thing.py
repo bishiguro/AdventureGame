@@ -34,17 +34,10 @@ class Thing (WObject):
     def is_thing (self):
         return True
 
-    def examine(self):
+    def look(self):
         if self.desc:
             output = self.desc
         else:
             output = "Your run-of-the-mill " + self.name() + "."
 
         self._location.report(output)
-
-
-class VerboseThing(Thing):
-    def __init__(self, name, loc, desc):
-        super(VerboseThing, self).__init__(name, loc)
-        self.desc = desc
-

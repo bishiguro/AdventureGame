@@ -155,7 +155,6 @@ VERBS = {
     'take' : Take(),
     'drop' : Drop(),
     'give' : Give(),
-    'examine' : Examine(),
     'god'  : God(),
     'use'  : Use(),
     'north' : Direction('north'),
@@ -165,7 +164,7 @@ VERBS = {
     'up'   : Direction('up'),
     'down' : Direction('down')
 }
-  
+
 
 def print_tick_action (t):
     Player.me.location().report('The clock ticks '+str(t))
