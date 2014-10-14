@@ -10,4 +10,5 @@ class Radar (MobileThing):
     def use (self,actor):
         actor.say('I fiddle with the buttons on ' + self.name());
         # FIX ME
-        actor.say("Mmm. It looks like it's broken...")
+        #actor.say("Mmm. It looks like it's broken...")
+        
