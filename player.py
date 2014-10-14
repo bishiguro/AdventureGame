@@ -43,7 +43,7 @@ class Player (Person):
 
         if all_stuff:
             print('You see:', names(all_stuff))
-        else: 
+        else:
             print('The room is empty')
 
         if people:

@@ -64,6 +64,10 @@ class Look (Verb):
         Player.me.look_around()
         return SAME_ROUND
 
+    def action1(self, obj1):
+        obj1.look()
+        return SAME_ROUND
+
 
 class Wait (Verb):
 
@@ -108,9 +112,4 @@ class Give (Verb):
 
     def action2 (self,obj1,obj2):
         obj1.give(Player.me,obj2)
-        return SAME_ROUND
-
-class Examine(Verb):
-    def action1(self, obj1):
-        obj1.examine()
         return SAME_ROUND
