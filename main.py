@@ -43,14 +43,14 @@ def create_world ():
     oval = Room('Oval')
     ac1st = Room('Academic Center First Floor')
     ac113 = Room('Academic Center 113')
-    cc1st = Room('Campus Center First Floor')
+    cc1st = Room('Campus Center First Floor', '')
     # West Hall
     westh = Room('West Hall')
-    wh1l = Room('West Hall 1st Floor Lounge')
+    wh1l = Room('West Hall 1st Floor Lounge', 'The closet door hangs ajar, and a delicious aroma wafts from the North wing.')
     wh2l = Room('West Hall 2nd Floor Lounge')
     wh3l = Room('West Hall 3rd Floor Lounge')
     wh4l = Room('West Hall 4th Floor Lounge')
-    nerf = Room('The Armory')
+    nerf = Room('The Armory','Nerf weaponry and foam swords line the shelves.')
     # East Hall
     easth = Room('East Hall')
     eh1l = Room('East Hall 1st Floor Lounge')
