@@ -3,10 +3,11 @@ from player import *
 
 class Thing (WObject):
 
-    def __init__ (self,name,loc):
+    def __init__ (self,name,loc,desc=None):
         WObject.__init__(self,name)
         self._location = loc
         loc.add_thing(self)
+        self.desc = desc
 
     def use (self,actor):
         actor.say('I try to use '+self.name()+' but nothing happens')
@@ -32,3 +33,18 @@ class Thing (WObject):
 
     def is_thing (self):
         return True
+
+    def examine(self):
+        if self.desc:
+            output = self.desc
+        else:
+            output = "Your run-of-the-mill " + self.name() + "."
+
+        self._location.report(output)
+
+
+class VerboseThing(Thing):
+    def __init__(self, name, loc, desc):
+        super(VerboseThing, self).__init__(name, loc)
+        self.desc = desc
+

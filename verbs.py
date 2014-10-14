@@ -110,4 +110,7 @@ class Give (Verb):
         obj1.give(Player.me,obj2)
         return SAME_ROUND
 
-        
+class Examine(Verb):
+    def action1(self, obj1):
+        obj1.examine()
+        return SAME_ROUND
