@@ -6,6 +6,10 @@ class Room (WObject): #,Container):
 
     rooms = []
 
+    @staticmethod
+    def getRooms(func):
+        return Room.rooms
+
     def __init__ (self,name, desc=None):
         WObject.__init__(self,name)
         self.desc = desc

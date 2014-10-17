@@ -40,7 +40,6 @@ class Player (Person):
 
         print('------------------------------------------------------------')
         print('You are in', loc.name())
-        print(loc.desc)
 
         if all_stuff:
             print('You see:', names(all_stuff))
