@@ -7,7 +7,7 @@ class Room (WObject): #,Container):
     rooms = []
 
     @staticmethod
-    def getRooms():
+    def getRooms(func):
         return Room.rooms
 
     def __init__ (self,name, desc=None):

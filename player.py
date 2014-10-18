@@ -19,7 +19,7 @@ class Player (Person):
     # Grab any kind of thing from player's location, 
     # given its name.  The thing may be in the possession of
     # the place, or in the possession of a person at the place.
-   
+
     def thing_named (self,name):
         for x in self.location().contents():
             if x.name() == name:
@@ -41,8 +41,7 @@ class Player (Person):
 
         print('------------------------------------------------------------')
         print('You are in', loc.name())
-        if desc:
-            print(desc)
+        print(desc)
 
         if all_stuff:
             print('You see:', names(all_stuff))
