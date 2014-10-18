@@ -152,6 +152,7 @@ VERBS = {
     'quit' : Quit(),
     'look' : Look(),
     'wait' : Wait(),
+    'inv' : Inventory(),
     'take' : Take(),
     'drop' : Drop(),
     'give' : Give(),

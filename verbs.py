@@ -74,6 +74,16 @@ class Wait (Verb):
     def action0 (self):
         return NEXT_ROUND
 
+class Inventory(Verb):
+
+    def action0(self):
+        inv = Player.me.peek_around()
+        if inv:
+            Player.me.say(', '.join(thing.name() for thing in Player.me.peek_around()))
+        else:
+            Player.me.say("Inventory empty.")
+        return SAME_ROUND
+
 class God (Verb):
 
     def action0 (self):

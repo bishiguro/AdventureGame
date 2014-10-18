@@ -8,11 +8,11 @@ class Person (MobileThing):    # Container...
         self._health = self._max_health
         self._contents = []
 
-    def contents (self):
-        return self._contents
+    # def contents (self):
+    #     return self._contents
 
     def have_thing (self,t):
-        for c in self.contents():
+        for c in self.peek_around():
             if c is t:
                 return True
         return False
@@ -50,8 +50,7 @@ class Person (MobileThing):    # Container...
     # same location as this person are holding/carrying
 
     def peek_around (self):
-        # FIX ME
-        return []
+        return self._contents
 
     def lose (self,t,loseto):
         self.say('I lose ' + t.name())
