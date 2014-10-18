@@ -6,6 +6,24 @@ class Person (MobileThing):    # Container...
         MobileThing.__init__(self,name,loc)
         self._max_health = 3
         self._health = self._max_health
+        self._contents = []
+
+    def contents (self):
+        return self._contents
+
+    def have_thing (self,t):
+        for c in self.contents():
+            if c is t:
+                return True
+        return False
+
+    def add_thing (self,t):
+        if isinstance(t, MobileThing):
+            self._contents.append(t)
+        else: self.say("I can't pick up {}.".format(t.name()))
+
+    def del_thing (self,t):
+        self._contents = [x for x in self._contents if x is not t]
 
     def health (self):
         return self._health

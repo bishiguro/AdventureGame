@@ -11,7 +11,4 @@ class Radar (MobileThing):
         actor.say('I fiddle with the buttons on ' + self.name());
         for room in Room.getRooms():
         	for item in room.contents():
-        		disp('I detect ' + item.name + ' in ' + room.name)
-
-        # FIX ME
-        #actor.say("Mmm. It looks like it's broken...")
+        		actor.say('I detect {} in {}'.format(item.name(), room.name()))

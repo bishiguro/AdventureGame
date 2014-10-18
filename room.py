@@ -6,6 +6,10 @@ class Room (WObject): #,Container):
 
     rooms = []
 
+    @staticmethod
+    def getRooms():
+        return Room.rooms
+
     def __init__ (self,name, desc=None):
         WObject.__init__(self,name)
         self.desc = desc
@@ -21,7 +25,6 @@ class Room (WObject): #,Container):
 
     # You see room reports only if you are in the same room
     # or if you have enabled god mode
-
     def report (self,msg):
         if Player.me.location() is self:
             print(msg)

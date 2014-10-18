@@ -12,14 +12,24 @@ class Thing (WObject):
     def use (self,actor):
         actor.say('I try to use '+self.name()+' but nothing happens')
 
-    def take (self,actor):
-        actor.say('I try to take '+self.name()+" but can't")
+    def take (self,actor):fthing(self)
+        actor.add_thing(self)
+        self._location = actor
 
     def drop (self,actor):
-        print(actor.name(),'is not carrying',self.name())
+        if actor.have_thing(self):
+            actor.del_thing(self)
+            actor.location.add_thing(self)
+            self._location = actor
+        else:
+            actor.say(actor.name(),'is not carrying',self.name())
 
     def give (self,actor,target):
-        print(actor.name(),'is not carrying',self.name())
+        actor.del_thing(self)
+        target.add_thing(self)
+        self._location = target
+        actor.say('I give {} to {}'.format(self.name(), target.name()))
+        #print(actor.name(),'is not carrying',self.name())
 
     def location (self):
         return self._location
