@@ -7,11 +7,11 @@ class Room (WObject): #,Container):
     rooms = []
 
     @staticmethod
-    def getRooms(func):
+    def getRooms():
         return Room.rooms
 
     def __init__ (self,name, desc=None):
-        WObject.__init__(self,name)
+        WObject.__init__(self, name)
         self.desc = desc
         self._exits = {}
         self._contents = []

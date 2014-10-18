@@ -104,25 +104,25 @@ def create_world ():
     # Better things.
     Thing('adequate-trees', oval, "The kind of trees you hang out with, but don't really want to have over for family dinner.")
     Thing('subpar-trees', oval, "A disappointment to look upon. Truly.")
-    MobileThing('Maverick', nerf, "A steadfast sidearm, reknowned across the west (hall).")
-    MobileThing('Modded Longshot', nerf, "The pinnicle of foam-based warfare.")
-    MobileThing('Vulcan', nerf, "Compensation for those for whom compensation has lost its original luster.")
-    MobileThing('Joe, Grandfather of the Unicorns', wh2l, "Joe gazes languidly out from the laquered frame, " +
+    MobileThing('maverick', nerf, "A steadfast sidearm, reknowned across the west (hall).")
+    MobileThing('modded longshot', nerf, "The pinnicle of foam-based warfare.")
+    MobileThing('vulcan', nerf, "Compensation for those for whom compensation has lost its original luster.")
+    MobileThing('Joe, grandfather of the unicorns', wh2l, "Joe gazes languidly out from the laquered frame, " +
                 "with the knowledge that comes only from millenia of strife.")
-    MobileThing('Gitar', wh3l, 'Your eyes glaze over for a second as you picture stage lights and topless girls.' +
+    MobileThing('gitar', wh3l, 'Your eyes glaze over for a second as you picture stage lights and topless girls.' +
                 'You shake yourself back to reality with difficulty.')
-    Computer('The Phoenix Box', wh3l, "The computer other computers wish they could be. Besides, re-images are basically beauty sleep.")
-    Computer('Space Sphere', ac1st, "Wanna go to space! Space. Space. Space. Wanna go to space.")
+    Computer('the phoenix box', wh3l, "The computer other computers wish they could be. Besides, re-images are basically beauty sleep.")
+    Computer('space sphere', ac1st, "Wanna go to space! Space. Space. Space. Wanna go to space.")
 
-    Professor('Riccardo',mh353,random.randint(1,5),2)
-    
-    homeworks = ['hw-1', 
+    Professor('Riccardo', mh353, random.randint(1, 5), 2)
+
+    homeworks = ['hw-1',
                  'hw-2',
                  'hw-3',
                  'hw-4',
                  'hw-5',
                  'hw-6']
-    
+
     for homework in homeworks:
         Homework(homework,
                  random.choice(Room.rooms))

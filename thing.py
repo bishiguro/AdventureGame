@@ -9,27 +9,17 @@ class Thing (WObject):
         loc.add_thing(self)
         self.desc = desc
 
-    def use (self,actor):
-        actor.say('I try to use '+self.name()+' but nothing happens')
-
     def take (self,actor):
-        actor.add_thing(self)
-        self._location.del_thing(self)
-        self._location = actor
+        actor.say("I can't take that I'm afraid.")
 
     def drop (self,actor):
-        if actor.have_thing(self):
-            actor.del_thing(self)
-            actor._location.add_thing(self)
-            self._location = actor.location()
-        else:
-            actor.say(actor.name(),'is not carrying',self.name())
+        actor.say("I don't have that in my inventory.")
 
     def give (self,actor,target):
-        actor.del_thing(self)
-        target.add_thing(self)
-        self._location = target
-        actor.say('I give {} to {}'.format(self.name(), target.name()))
+        actor.say("I can't give something I don't have!")
+
+    def use (self,actor):
+        actor.say('I try to use '+self.name()+' but nothing happens')
 
         target.accept(self, actor)
 
