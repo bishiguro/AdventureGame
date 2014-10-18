@@ -122,7 +122,7 @@ def create_world ():
                  'hw-4',
                  'hw-5',
                  'hw-6']
-    
+
     for homework in homeworks:
         Homework(homework,
                  random.choice(Room.rooms))
