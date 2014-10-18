@@ -6,6 +6,25 @@ class MobileThing (Thing):
         Thing.__init__(self,name,loc,desc)
         self._original_location = loc
 
+    def take (self,actor):
+        actor.add_thing(self)
+        self._location.del_thing(self)
+        self._location = actor
+
+    def drop (self,actor):
+        if actor.have_thing(self):
+            actor.del_thing(self)
+            actor._location.add_thing(self)
+            self._location = actor.location()
+        else:
+            actor.say(actor.name(),'is not carrying',self.name())
+
+    def give (self,actor,target):
+        actor.del_thing(self)
+        target.add_thing(self)
+        self._location = target
+        actor.say('I give {} to {}'.format(self.name(), target.name()))
+
     def move (self,loc):
         self.location().del_thing(self)
         loc.add_thing(self)
@@ -16,4 +35,3 @@ class MobileThing (Thing):
 
     def is_mobile_thing (self):
         return True
-
