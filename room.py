@@ -38,6 +38,9 @@ class Room (WObject): #,Container):
     def is_room (self):
         return True
 
+    def description(self):
+        return self.desc
+
 
     def have_thing (self,t):
         for c in self.contents():
