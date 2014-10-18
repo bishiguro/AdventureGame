@@ -25,6 +25,9 @@ class Person (MobileThing):    # Container...
     def del_thing (self,t):
         self._contents = [x for x in self._contents if x is not t]
 
+    def accept(self, thing, actor):
+        self.add_thing(thing)
+
     def health (self):
         return self._health
 

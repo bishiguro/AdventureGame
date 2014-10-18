@@ -31,6 +31,8 @@ class Thing (WObject):
         self._location = target
         actor.say('I give {} to {}'.format(self.name(), target.name()))
 
+        target.accept(self, actor)
+
     def location (self):
         return self._location
         
