@@ -19,10 +19,10 @@ class Registry:
             self._reg_list.insert(i, priority)
             self._reg_dict[priority] = [task]
 
-    def update(self):
+    def update(self, *args):
         for key in self._reg_list:
             for item in self._reg_dict[key]:
-                item()
+                item(*args)
 
     def __str__(self):
         return ', '.join("{}: {}".format(key, self._reg_dict[key]) for key in self._reg_list)
