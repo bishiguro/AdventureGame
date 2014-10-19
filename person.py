@@ -8,8 +8,8 @@ class Person (MobileThing):    # Container...
         self._health = self._max_health
         self._contents = []
 
-    # def contents (self):
-    #     return self._contents
+    def contents (self):
+        return self._contents
 
     def have_thing (self,t):
         for c in self.peek_around():
@@ -49,7 +49,7 @@ class Person (MobileThing):    # Container...
     # this function should return everything that everyone in the
     # same location as this person are holding/carrying
 
-    def peek_around (self):
+    def peek_around (self): # FINISH
         return self._contents
 
     def lose (self,t,loseto):
@@ -103,6 +103,8 @@ class Person (MobileThing):    # Container...
         print(actor.name(),'is not carrying',self.name())
         
     def accept (self,obj,source):
+        
+        self.add_thing(obj)
         self.say('Thanks, ' + source.name())
 
     def is_person (self):

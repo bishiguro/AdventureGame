@@ -1,5 +1,6 @@
 from mobile import *
 from room import *
+import person
 
 
 class Radar (MobileThing):
@@ -12,3 +13,6 @@ class Radar (MobileThing):
         for room in Room.getRooms():
         	for item in room.contents():
         		actor.say('I detect {} in {}'.format(item.name(), room.name()))
+        		if isinstance(item, person.Person):
+        			for p_item in item.contents():
+        			 	actor.say('I detect {} with {}'.format(p_item.name(), item.name()))
