@@ -8,6 +8,7 @@ class Professor (NPC):
 	def __init__ (self,name,loc,restlessness,professorial):
 			NPC.__init__(self,name,loc,restlessness,100)
 			self._professorial = professorial
+			Player.clock.register(self.lecture, 4)
 
 	_topics = ['Turing machines',
 						 'the lambda calculus',
@@ -31,7 +32,7 @@ class Professor (NPC):
 					self.say('Mmm, could have used some more comments.')
 					self.say('All in all, well done. Top work.')
 					obj.give(self,source)
-					self.say('Looks like that\'s enough to pass the class. Congrats. You win, I guess.')
+					self.say('Looks like that\'s enough to pass the class. Congrats.')
 					exit()
 				else:
 					self.say('Wait, this homework\'s not even been started!')

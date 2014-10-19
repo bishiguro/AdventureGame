@@ -10,7 +10,7 @@ from troll import *
 from professor import *
 from homework import *
 from computer import *
-
+from badninja import *
 
 REVERSE = {
     'north' : 'south',
@@ -147,6 +147,13 @@ def create_world ():
             random.randint(1,3),
             random.randint(1,3))
 
+    bad_ninjas = ['Trogdor']
+
+    for ninja in bad_ninjas:
+        BadNinja(ninja, 
+            mh353, 
+            random.randint(1,3),
+            random.randint(1,3))
 
 VERBS = {
     'quit' : Quit(),
