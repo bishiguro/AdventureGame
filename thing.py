@@ -21,8 +21,6 @@ class Thing (WObject):
     def use (self,actor):
         actor.say('I try to use '+self.name()+' but nothing happens')
 
-        target.accept(self, actor)
-
     def location (self):
         return self._location
         

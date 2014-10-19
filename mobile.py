@@ -1,4 +1,5 @@
 from thing import *
+import person
 
 class MobileThing (Thing):
 
@@ -20,10 +21,12 @@ class MobileThing (Thing):
             actor.say(actor.name(),'is not carrying',self.name())
 
     def give (self,actor,target):
-        actor.del_thing(self)
-        target.add_thing(self)
-        self._location = target
-        actor.say('I give {} to {}'.format(self.name(), target.name()))
+
+        if isinstance(target, person.Person):
+            actor.del_thing(self)
+            self._location = target
+            actor.say('I give {} to {}'.format(self.name(), target.name()))
+            target.accept(self,actor)
 
     def move (self,loc):
         self.location().del_thing(self)
