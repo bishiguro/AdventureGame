@@ -188,8 +188,9 @@ def main ():
 
     # Create the world
     create_world()
-    
+    Player.clock.register(print_tick_action, 0)
     Player.me.look_around()
+
 
     while True:
         response = read_player_input ()
@@ -197,10 +198,12 @@ def main ():
         if response[0] in VERBS:
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
+                print("\n\n")
+                Player.clock.tick()
                 Player.me.look_around()
         else:
             print('What??')
-            
+
 
 if __name__ == '__main__':
     main()
