@@ -10,7 +10,7 @@ class Room (WObject): #,Container):
     def getRooms():
         return Room.rooms
 
-    def __init__ (self,name, desc=None):
+    def __init__ (self, name, desc=None):
         WObject.__init__(self, name)
         self.desc = desc
         self._exits = {}

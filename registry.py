@@ -1,4 +1,5 @@
 import bisect
+from types import MethodType
 
 
 class Registry:
@@ -22,7 +23,22 @@ class Registry:
     def update(self, *args):
         for key in self._reg_list:
             for item in self._reg_dict[key]:
-                item(*args)
+                if not self.remove(key, item):
+                    item(*args)
+
+    def remove(self, key, item):
+        # Finds out if the owner of a method exists
+        if isinstance(item, MethodType) and not item.__self__.location():
+
+            # And, if not, deletes the method from the registry
+            self._reg_dict[key].remove(item)
+            if not self._reg_dict[key]:
+                del self._reg_dict[key]
+                bisect.bisect(self._reg_list, key)
+
+            return True
 
     def __str__(self):
-        return ', '.join("{}: {}".format(key, self._reg_dict[key]) for key in self._reg_list)
+        list_str = ', '.join(str(i) for i in self._reg_list)
+        dict_str = ', '.join("{}: {}".format(key, self._reg_dict[key]) for key in self._reg_list)
+        return "{}\n{}".format(list_str, dict_str)

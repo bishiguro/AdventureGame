@@ -11,6 +11,7 @@ from professor import *
 from homework import *
 from computer import *
 from badninja import *
+from trollhunter import TrollHunter
 
 REVERSE = {
     'north' : 'south',
@@ -135,17 +136,27 @@ def create_world ():
     for student in students:
         NPC(student,
             random.choice(Room.rooms),
-            random.randint(1,5),
-            random.randint(1,5))
+            random.randint(1, 5),
+            random.randint(1, 5))
 
     trolls = ['Polyphemus',
-              'Gollum']
+              'Gollum',
+              'Internet-Troll',
+              'Alternate-Ricardo']
 
     for troll in trolls:
       Troll(troll,
             random.choice(Room.rooms),
-            random.randint(1,3),
-            random.randint(1,3))
+            random.randint(1, 3),
+            random.randint(1, 3))
+
+      troll_hunters = ['Mister Piggy',
+                      'Angel']
+
+    for troll_hunter in troll_hunters:
+        TrollHunter(troll_hunter,
+            random.choice(Room.rooms),
+            efficacy=random.randint(1, 4))
 
     bad_ninjas = ['Trogdor']
 
