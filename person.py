@@ -1,4 +1,5 @@
 from mobile import *
+import player
 
 class Person (MobileThing):    # Container...
 
@@ -82,8 +83,10 @@ class Person (MobileThing):    # Container...
 
     def die (self):
         self.location().broadcast('An earth-shattering, soul-piercing scream is heard...')
+        if player.Player.god_mode:
+            print("{} has died.".format(self.name()))
         self.destroy()
-        
+
 
     def enter_room (self):
         people = self.people_around()

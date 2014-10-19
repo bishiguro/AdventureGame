@@ -12,7 +12,7 @@ class Professor (NPC):
 								 'the lambda calculus',
 								 'Godel']
 
-			def lecture (self,time):
+			def lecture (self, time):
 				if not self.is_in_limbo():
 					if random.randrange(self._professorial) == 0:
 							if self.people_around():

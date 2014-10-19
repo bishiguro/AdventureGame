@@ -10,6 +10,9 @@ class Clock (Registry):
     def register(self, f, priority):
         self.add(f, priority)
 
+    def deregister(self, f):
+        self.remove(f)
+
     def tick(self):
         self.update(self._time)
         self._time += 1

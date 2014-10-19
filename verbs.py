@@ -60,9 +60,14 @@ class Direction (Verb):
 
 class Look (Verb):
 
-    def action0 (self):
-        Player.me.look_around()
-        return SAME_ROUND
+    def action0(self):
+        if not Player.god_mode:
+            Player.me.look_around()
+        else:
+            for room in Room.getRooms():
+                for item in room.contents():
+                    actor.say('{} is in {}'.format(item.name(), room.name()))
+            return SAME_ROUND
 
     def action1(self, obj1):
         obj1.look()
