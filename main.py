@@ -12,6 +12,7 @@ from homework import *
 from computer import *
 from badninja import *
 from trollhunter import TrollHunter
+from butterfly import Butterfly
 
 REVERSE = {
     'north' : 'south',
@@ -150,7 +151,7 @@ def create_world ():
             random.randint(1, 3),
             random.randint(1, 3))
 
-      troll_hunters = ['Mister Piggy',
+    troll_hunters = ['Mister Piggy',
                       'Angel']
 
     for troll_hunter in troll_hunters:
@@ -165,6 +166,11 @@ def create_world ():
             mh353, 
             random.randint(1,3),
             random.randint(1,3))
+
+    #butterflies = ['Marie-Sylvie']
+
+    #for butterfly in butterflies:
+    Butterfly('Marie-Sylvie', oval)
 
 VERBS = {
     'quit' : Quit(),
