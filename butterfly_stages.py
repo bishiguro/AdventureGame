@@ -31,6 +31,7 @@ class Papillon (NPC):
 
 	def __init__ (self,name,loc):
 		NPC.__init__(self,name,loc)
+		self.max_health = 1
 		self.colors = ['blue', 'purple', 'orange and black', 'blue and black', 'bright orange']
 		self.desc = "A lovely " + random.choice(self.colors) + " butterfly."
 
