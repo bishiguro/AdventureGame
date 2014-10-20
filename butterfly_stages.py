@@ -54,10 +54,8 @@ class Papillon (NPC):
 		exits = loc.exits()
 		if direction in exits:
 			t = exits[direction]
-			self.leave_room()
 			loc.report(self.name()+' flies from '+ loc.name()+' to '+t.name())
 			self.move(t)
-			self.enter_room()
 			return True
 		else:
 			print('No exit in direction', direction)

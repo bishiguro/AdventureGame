@@ -15,8 +15,8 @@ class Butterfly(WObject):
         player.Player.clock.register(self.grow, 5)
 
         self.age = 0
-        self.stage_1 = random.randint(3,5)
-        self.stage_2 = random.randint(3,5)
+        self.stage_1 = random.randint(5,15)
+        self.stage_2 = random.randint(5,15)
         self.stage = Caterpillar(name, loc)
 
     def location(self):

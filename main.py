@@ -167,10 +167,9 @@ def create_world ():
             random.randint(1,3),
             random.randint(1,3))
 
-    #butterflies = ['Marie-Sylvie']
-
-    #for butterfly in butterflies:
-    Butterfly('Marie-Sylvie', oval)
+    butterflies = ['Marie-Sylvie', 'Sylvester', 'Silas', 'Puck', 'Aoife']
+    for butterfly in butterflies:
+        Butterfly(butterfly, random.choice(Room.rooms))
 
 VERBS = {
     'quit' : Quit(),
