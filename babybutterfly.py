@@ -5,7 +5,9 @@ from papillon import Papillon
 from room import Room
 from person import Person
 
+
 class BabyButterfly(MobileThing):
+
     def __init__(self, name, loc):
         self.state = Caterpillar(self)
         super(BabyButterfly, self).__init__(name, loc, self.state.desc())
@@ -28,6 +30,7 @@ class BabyButterfly(MobileThing):
 
 
 class ButterflyState:
+
     def __init__(self, msg, desc, next_stage, manager):
         self._manager = manager
         self._next_stage = next_stage
@@ -45,7 +48,6 @@ class ButterflyState:
             self.notify("{} {}".format(self._manager.name(), self._message))
             self._manager.changeState(self._next_stage)
 
-
     def notify(self, notification):
         loc = self._manager.location()
         if isinstance(loc, Person):
@@ -53,8 +55,8 @@ class ButterflyState:
         loc.report(notification)
 
 
-
 class Caterpillar(ButterflyState):
+
     def __init__(self, manager):
         msg = "begins to spin a cocoon"
         desc = "A fuzzy caterpillar."
@@ -63,6 +65,7 @@ class Caterpillar(ButterflyState):
 
 
 class Cocoon(ButterflyState):
+
     def __init__(self, manager):
         msg = "is emerging from the cocoon!"
         desc = "A small, brown cocoon."

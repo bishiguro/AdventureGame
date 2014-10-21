@@ -40,8 +40,13 @@ class Room (WObject): #,Container):
     def description(self):
         return self.desc
 
+    def has_type(self, t):
+        for c in self.contents():
+            if isinstance(c, t):
+                return True
+        return False
 
-    def have_thing (self,t):
+    def have_thing(self, t):
         for c in self.contents():
             if c is t:
                 return True
@@ -52,3 +57,5 @@ class Room (WObject): #,Container):
 
     def del_thing (self,t):
         self._contents = [x for x in self._contents if x is not t]
+
+if __name__ == "__main__":
