@@ -12,7 +12,7 @@ class BabyButterfly(MobileThing):
         player.Player.clock.register(self.grow, 5)
 
     def changeState(self, state):
-        if isinstance(state, Papillon):
+        if state == Papillon:
             loc = self.location()
             if isinstance(loc, Person):
                 loc.say("Be free {}, I'll miss you!".format(self.name()))
@@ -21,7 +21,7 @@ class BabyButterfly(MobileThing):
             self.destroy()
 
         else:
-            self.state = state(self.location())
+            self.state = state(self)
 
     def grow(self, time):
         self.state.grow()
@@ -36,7 +36,7 @@ class ButterflyState:
         self._grow_time = random.randint(5, 15)
 
     def desc(self):
-        return self.desc
+        return self._desc
 
     def grow(self):
         #print("Manager: {}".format(type(self._manager)))
