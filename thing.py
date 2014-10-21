@@ -1,5 +1,6 @@
 from wobject import *
 from player import *
+import room, person
 
 class Thing (WObject):
 
@@ -40,4 +41,7 @@ class Thing (WObject):
         else:
             output = "Your run-of-the-mill " + self.name() + "."
 
-        self._location.report(output)
+        if isinstance(self._location, room.Room):
+            self._location.report(output)
+        elif isinstance(self._location, person.Person):
+            self._location._location.report(output)

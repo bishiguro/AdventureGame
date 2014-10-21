@@ -39,6 +39,10 @@ class Person (MobileThing):    # Container...
     def have_fit (self):
         self.say('Yaaaaah! I am upset!')
 
+    def drop_contents(self):
+        for item in self.contents():
+            item._location = self.location()
+
     def people_around (self):
         return [x for x in self.location().contents()
                     if x.is_person() and x is not self]
@@ -86,7 +90,6 @@ class Person (MobileThing):    # Container...
         if player.Player.god_mode:
             print("{} has died.".format(self.name()))
         self.destroy()
-
 
     def enter_room (self):
         people = self.people_around()

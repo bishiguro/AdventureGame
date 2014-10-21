@@ -12,7 +12,7 @@ from homework import *
 from computer import *
 from badninja import *
 from trollhunter import TrollHunter
-from butterfly import Butterfly
+from babybutterfly import BabyButterfly
 
 REVERSE = {
     'north' : 'south',
@@ -169,7 +169,7 @@ def create_world ():
 
     butterflies = ['Marie-Sylvie', 'Sylvester', 'Silas', 'Puck', 'Aoife']
     for butterfly in butterflies:
-        Butterfly(butterfly, random.choice(Room.rooms))
+        BabyButterfly(butterfly, random.choice(Room.rooms))
 
 VERBS = {
     'quit' : Quit(),
