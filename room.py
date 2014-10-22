@@ -57,5 +57,3 @@ class Room (WObject): #,Container):
 
     def del_thing (self,t):
         self._contents = [x for x in self._contents if x is not t]
-
-if __name__ == "__main__":

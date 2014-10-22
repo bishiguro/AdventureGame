@@ -23,12 +23,3 @@ class WObject (object):
 
     def is_homework (self):
         return False
-
-    def is_cable(self):
-        return False
-
-    def is_computer(self):
-        return False
-
-    def is_riccardo_computer(self):
-        return False
