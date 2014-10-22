@@ -23,7 +23,7 @@ class Player (Person):
     def thing_named (self,name):
         everything = self.peek_around()
         everything.extend(self.contents())
-        
+        everything.extend(self.people_around())
         for x in everything:
             if x.name() == name:
                 return x

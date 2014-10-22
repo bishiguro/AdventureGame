@@ -45,8 +45,16 @@ def create_world ():
     mh2nd = Room('Milas Hall Second Floor')
     mh1st = Room('Milas Hall First Floor')
     oval = Room('Oval')
+    
     ac1st = Room('Academic Center First Floor')
     ac113 = Room('Academic Center 113')
+    ac2nd = Room('Academic Center Second Floor', 'A series of charcoal drawings line the north wall.')
+    acdesign = Room('Academic Center Design Studio', 'Colorful post-it notes and snapped Delrin pieces are strewn over the tables.')
+    ac3rd = Room('Academic Center Third Floor')
+    acdance = Room('Academic Center Third Floor Endcap')
+    ac4th = Room('Academic Center Fourth Floor')
+    aclab = Room('Academic Center Biology Lab')
+
     cc1st = Room('Campus Center First Floor', '')
     # West Hall
     westh = Room('West Hall')
@@ -55,6 +63,12 @@ def create_world ():
     wh3l = Room('West Hall 3rd Floor Lounge')
     wh4l = Room('West Hall 4th Floor Lounge')
     nerf = Room('The Armory','Nerf weaponry and foam swords line the shelves.')
+
+    stairsw1 = Room("The Anti-Social Staircase","For when you'd rather be alone.")
+    stairsw2 = Room("The Anti-Social Staircase", "For when you'd rather be alone.")
+    stairsw3 = Room("The Anti-Social Staircase", "For when you'd rather be alone.")
+    stairsw4 = Room("The Anti-Social Staircase", "For when you'd rather be alone.")
+
     # East Hall
     easth = Room('East Hall')
     eh1l = Room('East Hall 1st Floor Lounge')
@@ -65,9 +79,22 @@ def create_world ():
     babson = Room('Babson College')
     shuttle = Room('BOW Shuttle')
     wels = Room('Wellesley College')
+    greatlawn = Room('The Great Lawn', 'A green expanse of sunshine and happiness.')
+    parcelb = Room('Parcel B', 'The brilliant colors and peaceful quiet lure you into a meditative state.')
+    bajatrack = Room('Baja Track')
+    trebuchet = Room('Trebuchet')
+    elephantbones = Room('Elephant Bones')
 
     biconnect(oval, 'west',  ac1st)
+
     biconnect(ac1st, 'north',  ac113)
+    biconnect(ac1st, 'up', ac2nd)
+    biconnect(ac2nd, 'up', ac3rd)
+    biconnect(ac2nd, 'north', acdesign)
+    biconnect(ac3rd, 'up', ac4th)
+    biconnect(ac3rd, 'west', acdance)
+    biconnect(ac4th, 'west', aclab)
+
     biconnect(mh353, 'east',  mh3rd)
     biconnect(mh3rd, 'down',  mh2nd)
     biconnect(mh2nd, 'down',  mh1st)
@@ -91,13 +118,25 @@ def create_world ():
     biconnect(shuttle, 'east', babson)
     biconnect(shuttle, 'west', wels)
     biconnect(shuttle, 'north', easth)
+    biconnect(greatlawn, 'north', westh)
+    biconnect(greatlawn, 'south', parcelb)
+    biconnect(parcelb, 'south', bajatrack)
+    biconnect(bajatrack, 'south', trebuchet)
+    biconnect(parcelb, 'west', elephantbones)
 
+    # Anti-Social Elevator
+    biconnect(wh1l, 'west', stairsw1)
+    biconnect(stairsw1, 'up', stairsw2)
+    biconnect(wh2l, 'west', stairsw2)
+    biconnect(stairsw2, 'up', stairsw3)
+    biconnect(wh3l, 'west', stairsw3)
+    biconnect(stairsw3, 'up', stairsw4)
+    biconnect(wh4l, 'west', stairsw4)
 
     # The player is the first 'thing' that has to be created
 
     #Player('Blubbering-Fool', oval)
-    Riccardo('Riccardo', oval)
-
+    Riccardo('Riccardo', ac113)
     Radar('handy radar', mh353)
     Thing('blackboard', ac113)
     Thing('lovely-trees', oval, "Just enough above you to huff haugtily in the wind as you approach.")
@@ -119,8 +158,6 @@ def create_world ():
                 'You shake yourself back to reality with difficulty.')
     Computer('the phoenix box', wh3l, "The computer other computers wish they could be. Besides, re-images are basically beauty sleep.")
     Computer('space sphere', ac1st, "Wanna go to space! Space. Space. Space. Wanna go to space.")
-
-    #Professor('Riccardo', mh353, random.randint(1, 5), 2)
 
     homeworks = ['hw-1',
                  'hw-2',
@@ -171,13 +208,16 @@ def create_world ():
             random.randint(1,3),
             random.randint(1,3))
 
-    butterflies = ['Marie-Sylvie', 'Sylvester', 'Silas', 'Puck', 'Aoife']
+    butterflies = ['Marie-Sylvie', 'Sylvester', 'Puck', 'Aoife']
+
     for butterfly in butterflies:
         BabyButterfly(butterfly, random.choice(Room.rooms))
 
-    cables = ['HDMI', 'VGA', 'DVI', 'coaxial']
-    for cable in cables:
-        Cable(cable, random.choice(Room.rooms))
+    cable_types = ['HDMI', 'VGA', 'DVI', 'coaxial']
+    far_rooms = [eh4l, wels, aclab, parcelb]
+
+    Cable(random.choice(cable_types), random.choice(far_rooms))
+
 
 VERBS = {
     'quit' : Quit(),
