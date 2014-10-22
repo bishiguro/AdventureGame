@@ -1,11 +1,12 @@
 from mobile import *
 from computer import *
+import random
 import person
 
 class Cable (MobileThing):
 
 	def __init__ (self,name,loc):
-		self.desc = "The elusive {} cable".format(self.name)
+		self.desc = "The elusive {} cable".format(name)
 		MobileThing.__init__(self,name,loc,self.desc)
 
 	def use(self, actor):
