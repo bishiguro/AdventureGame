@@ -171,6 +171,10 @@ def create_world ():
     for butterfly in butterflies:
         BabyButterfly(butterfly, random.choice(Room.rooms))
 
+VERBS = {}
+
+
+
 VERBS = {
     'quit' : Quit(),
     'look' : Look(),
@@ -188,6 +192,11 @@ VERBS = {
     'up'   : Direction('up'),
     'down' : Direction('down')
 }
+
+def dispVerbs():
+    print("Available Commands:")
+    for verb in VERBS:
+        print("--{}".format(verb))
 
 
 def print_tick_action (t):
@@ -218,7 +227,8 @@ def main ():
     while True:
         response = read_player_input ()
         print
-        if response[0] in VERBS:
+        if response[0] == 'help': dispVerbs()
+        elif response[0] in sorted(VERBS):
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
                 print("\n\n")
