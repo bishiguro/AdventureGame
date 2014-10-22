@@ -24,9 +24,7 @@ class NPC (Person):
             self.go(dir)
 
     def take_something (self):
-        everything = []
-        everything.extend(self.stuff_around())
-        everything.extend(self.peek_around())
+        everything = self.peek_around()
         if everything:
             something = random.choice(everything)
             something.take(self)
