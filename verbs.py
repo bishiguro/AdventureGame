@@ -134,3 +134,54 @@ class Give (Verb):
         else:
             Player.me.say("I can't give an object to {}.".format(obj2.name()))
         return SAME_ROUND
+
+
+class Ask (Verb):
+
+    def action1(self, obj1):
+        if isinstance(obj1, Student):
+            obj1.ask()
+        else:
+            Player.me.report("I don't think that {} knows anything ".format(obj1) +
+                             "about the cable. You should try asking a student.")
+
+
+class Email (Verb):
+
+    def act(self, target):
+        if len(target) == 1:
+            name = target[0]
+
+            # Catch invalid entries
+            if not name == 'all-students' or not name in Students._all_students:
+                Player.me.say("I don't think that {} is a student here.".format(name))
+            else:
+                return self.action1(name)
+
+        # Catch invalid arguments
+        else:
+            print("Who did you want to email? Try their name, or 'all-students'.")
+
+        return SAME_ROUND
+
+    def action1(self, name):
+        if name in Students._all_students:
+            self.read_email(Students.email_student(name))
+        else:
+            emails_back = Students.email_all_students()
+            for email in emails_back:
+                self.read_email(email)
+
+        return NEXT_ROUND
+
+    def read_email(self, email):
+        Player.me.report("{} writes:\n{}".format(*email))
+
+
+class Directory (Verb):
+
+    def action0(self):
+        Player.me.report("STUDENTS of OLIN COLLEGE:")
+        for s in Students._all_students:
+            Player.me.report(" --{}".format(s))
+        return SAME_ROUND

@@ -5,28 +5,6 @@ from cable import Cable
 from npc import NPC
 
 
-"""
-    - On enter:
-        - Student has a random chance to take cable (1/5 - 4/5)
-        - Student records info on where they last saw the cable
-
-    - On ask:
-        - Student replies I don't know if they don't know
-        - Student replies I have it and gives it to you if they do
-        - Student gives both pieces of information if they know something
-
-    - On email:
-        - Student sends one piece of info, both, or no response
-        - Student email addresses includes students name, some random characters, and a domain
-
-    - On email AllStudents
-        - Invokes email on every student
-
-    - Check if cable is taken in accept method and set information accordingly
-
-"""
-
-
 class Student(NPC):
     _all_students = {}
     _first_ext = ["", "bat", "super", "mega", "best", "127", "283", "l33t", "xx", "#hashtag", "hashtag", "#"]
@@ -39,11 +17,11 @@ class Student(NPC):
         return Student._all_students[student_name].email()
 
     @staticmethod
-    def email_all_students(self, sender):
+    def email_all_students(self):
         sender.location().report("Even as you hit the send button, " +
                                  "you feel the combined wroth of the student body " +
                                  "roll over you, so malevolently that it actually hurts.")
-        sender.suffer(1)
+        Player.me.suffer(1)
 
         email_list = []
         for student in Student._all_students:
@@ -69,7 +47,7 @@ class Student(NPC):
         if not info:
             return None
 
-        response_body = "{}\n{}".format(info, self.name())
+        response_body = "{}\n-{}".format(info, self.name())
         return self._email, response_body
 
     def ask(self):
