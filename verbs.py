@@ -142,7 +142,7 @@ class Ask (Verb):
         if isinstance(obj1, Student):
             obj1.ask()
         else:
-            Player.me.report("I don't think that {} knows anything ".format(obj1) +
+            Player.me.report("I don't think that {} knows anything ".format(obj1.name()) +
                              "about the cable. You should try asking a student.")
 
 
