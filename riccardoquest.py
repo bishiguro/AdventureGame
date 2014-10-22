@@ -243,6 +243,10 @@ VERBS = {
     'directory' : Directory()
 }
 
+def dispVerbs():
+    print("Available Commands:")
+    for verb in sorted(VERBS):
+        print("--{}".format(verb))
 
 def print_tick_action (t):
     Player.me.location().report('The clock ticks '+str(t))
@@ -301,7 +305,8 @@ def main ():
     while True:
         response = read_player_input ()
         print
-        if response[0] in VERBS:
+        if response[0] == 'help': dispVerbs()
+        elif response[0] in VERBS:
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
                 print("\n\n")
