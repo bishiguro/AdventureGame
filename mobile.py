@@ -3,7 +3,7 @@ import person
 
 class MobileThing (Thing):
 
-    def __init__ (self,name,loc,desc=None):
+    def __init__ (self,name,loc,desc="Light enough to take..."):
         Thing.__init__(self,name,loc,desc)
         self._original_location = loc
 

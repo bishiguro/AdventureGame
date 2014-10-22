@@ -31,8 +31,8 @@ class Student(NPC):
 
         return email_list
 
-    def __init__(self, name, loc):
-        super(Student, self).__init__(name, loc)
+    def __init__(self, name, loc, desc="A student of Olin College."):
+        super(Student, self).__init__(name, loc, desc)
         Student._all_students[name] = self
         self._techy = random.randint(1, 4)
         self._cable_info = None

@@ -4,8 +4,8 @@ import random
 
 class NPC (Person):
 
-    def __init__ (self, name, loc, restlessness=2, miserly=4):
-        Person.__init__(self, name, loc)
+    def __init__ (self, name, loc, desc="A willful individual.", restlessness=2, miserly=4):
+        Person.__init__(self, name, loc, desc)
         self._restlessness = restlessness
         self._miserly = miserly
         Player.clock.register(self.move_and_take_stuff, 5)
