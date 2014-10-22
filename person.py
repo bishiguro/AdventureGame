@@ -49,6 +49,13 @@ class Person (MobileThing):    # Container...
     def stuff_around (self):
         return [x for x in self.location().contents() if not x.is_person()]
 
+    def possessions(self):
+        p = []
+        for x in self.location().contents():
+            if x.is_person():
+                p.extend(x.contents())
+        return p
+
     def peek_around (self):
         """
         Returns everything at a loction even if it is

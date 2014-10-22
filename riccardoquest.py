@@ -168,7 +168,7 @@ def create_world ():
 
     cypress = Student("Cypress", random.choice(Room.rooms))  
     bonbon = Student("Bonskilaylay", random.choice(Room.rooms))
-    nick = Student("Nicholas", random.choice(Room.rooms))
+    nick = Student("Nick", random.choice(Room.rooms))
     shrinidhi = Student("Shrinidhi", random.choice(Room.rooms))
     zach = Student("Zach", random.choice(Room.rooms))
     greg = Student("Gregleston", ac113)

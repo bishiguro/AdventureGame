@@ -37,6 +37,7 @@ class Player (Person):
         exits = loc.exits()
         people = self.people_around()
         all_stuff = self.stuff_around()
+        possessions = self.possessions()
 
         print('------------------------------------------------------------')
         print('You are in', loc.name())
@@ -51,6 +52,9 @@ class Player (Person):
             print('You see:', names(people))
         else:
             print('You see no one around')
+
+        if possessions:
+            print('People have:', names(possessions))
 
         if exits:
             print('Exits:', ', '.join([x for x in exits]))
