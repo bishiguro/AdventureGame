@@ -27,11 +27,6 @@ class Student(NPC):
     _second_ext = ["prosnipes", "360noscope", "wizard", "nopants", "hashtag", "selfie"]
     _domains = ["aol.com", "gmail.com", "yahoo.com", "toteslegit.ru", "bestemail.co", "we'rehip.io"]
 
-    @staticmethod
-    def email(target_name):
-        for student in Student._all_students:
-            if student.name() == target_name:
-                return student.ask()
 
     def emailAllStudents(self, sender):
         sender.location().report("Even as you hit the send button, " +
@@ -47,15 +42,19 @@ class Student(NPC):
 
     def __init__(self, name, loc):
         super(Student, self).__init__(name, loc)
-        self._techy = random.randint(1, 5)
+        self._techy = random.randint(1, 4)
         self._cable_info = None
-        self._email = "{}@{}".format(self.name(), random.choice(Student._domains))
+
+        first_ext = random.choice(Student._first_ext)
+        second_ext = random.choice(Student._second_ext)
+        domain = random.choice(Student._domains)
+        self._email = "{}{}{}@{}".format(name, first_ext, second_ext, domain)
 
     def enter_room (self):
         if not self.has_cable():
             target = self.checkForCable():
             if target:
-                self.tryTakeCable(target)
+                self.cableNotify(target)
 
         super(Student, self).enter_room()
 
@@ -70,10 +69,16 @@ class Student(NPC):
                 return thing
 
     def tryTakeCable(self, target):
+        if random.randint(1, 5) <= self._techy:
+            target.take(self)
+            self._cable_info = target
+            return True
 
+    def lose(self, t, loseto):
+        if isinstance(t, Cable):
+            self.recordInfo(loseto)
+
+        super(Student, self).lose(t, loseto)
 
     def recordInfo(self, target):
         self._cable_info = (target, self.location())
-
-    def ask(self):
-        return str(self._information)
