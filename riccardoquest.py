@@ -13,6 +13,7 @@ from computer import *
 from badninja import *
 from trollhunter import TrollHunter
 from babybutterfly import BabyButterfly
+from cable import Cable
 
 REVERSE = {
     'north' : 'south',
@@ -102,6 +103,7 @@ def create_world ():
     MobileThing('math-book', oval, 'Just say no.')
     Computer('hal-9000', ac113, "I can't let you do that, Riccardo.")
     Computer('johnny-5', easth, 'Inpuuuuuuuuuut!')
+    RiccardoComputer('Riccardo\'s Main Frame', ac113, 'If only you had a cable...')
 
     # Better things.
     Thing('adequate-trees', oval, "The kind of trees you hang out with, but don't really want to have over for family dinner.")
@@ -170,6 +172,10 @@ def create_world ():
     butterflies = ['Marie-Sylvie', 'Sylvester', 'Silas', 'Puck', 'Aoife']
     for butterfly in butterflies:
         BabyButterfly(butterfly, random.choice(Room.rooms))
+
+    cables = ['HDMI', 'VGA', 'DVI', 'coaxial']
+    for cable in cables:
+        Cable(cable, random.choice(Room.rooms))
 
 VERBS = {
     'quit' : Quit(),
