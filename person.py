@@ -106,8 +106,7 @@ class Person (MobileThing):    # Container...
 
         if self.has_cable():
             for person in people:
-                if isinstance(person, Student):
-                    person.cableNotify(self)
+                person.cableNotify(self)
 
     def has_cable(self):
         for c in self._contents:
@@ -115,6 +114,9 @@ class Person (MobileThing):    # Container...
                 return True
 
         return False
+
+    def cableNotify(self, target):
+        pass
 
     def leave_room (self):
         pass   # do nothing to reduce verbiage

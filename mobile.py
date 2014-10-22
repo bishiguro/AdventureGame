@@ -20,7 +20,6 @@ class MobileThing (Thing):
             actor.say('I give {} to {}'.format(self.name(), target.name()))
             target.say(response)
             self.move(target)
-            
 
     def move (self,loc):
         self.location().del_thing(self)
