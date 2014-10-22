@@ -1,5 +1,6 @@
 import sys
 from player import *
+from student import Student
 
 SAME_ROUND = 1
 NEXT_ROUND = 2  
@@ -153,7 +154,7 @@ class Email (Verb):
             name = target[0]
 
             # Catch invalid entries
-            if not name == 'all-students' or not name in Students._all_students:
+            if not name == 'all-students' and not name in Student._all_students:
                 Player.me.say("I don't think that {} is a student here.".format(name))
             else:
                 return self.action1(name)
@@ -165,23 +166,27 @@ class Email (Verb):
         return SAME_ROUND
 
     def action1(self, name):
-        if name in Students._all_students:
-            self.read_email(Students.email_student(name))
+        if name in Student._all_students:
+            self.read_email(Student.email_student(name))
         else:
-            emails_back = Students.email_all_students()
+            emails_back = Student.email_all_students()
             for email in emails_back:
-                self.read_email(email)
+                if email:
+                    self.read_email(email)
 
         return NEXT_ROUND
 
     def read_email(self, email):
-        Player.me.report("{} writes:\n{}".format(*email))
+        if email:
+            Player.me.report("{} writes:\n{}".format(*email))
+        else:
+            Player.me.report("You wait for some time for a response, but receive nothing.")
 
 
 class Directory (Verb):
 
     def action0(self):
         Player.me.report("STUDENTS of OLIN COLLEGE:")
-        for s in Students._all_students:
+        for s in Student._all_students:
             Player.me.report(" --{}".format(s))
         return SAME_ROUND

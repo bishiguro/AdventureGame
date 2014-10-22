@@ -171,7 +171,7 @@ def create_world ():
     nick = Student("Nicholas", random.choice(Room.rooms))
     shrinidhi = Student("Shrinidhi", random.choice(Room.rooms))
     zach = Student("Zach", random.choice(Room.rooms))
-    greg = Student("Gregleston", random.choice(Room.rooms))
+    greg = Student("Gregleston", ac113)
     haley = Student("Haley", random.choice(Room.rooms))
     chelsea = Student("Chelsea", random.choice(Room.rooms))
     philip = Student("Philip", random.choice(Room.rooms))
@@ -216,7 +216,7 @@ def create_world ():
     for butterfly in butterflies:
         BabyButterfly(butterfly, random.choice(Room.rooms))
 
-    cable_types = ['HDMI', 'VGA', 'DVI', 'coaxial']
+    cable_types = ['HDMI', 'VGA', 'DVI', 'coaxial', 'marker']
     far_rooms = [eh4l, wels, aclab, parcelb]
 
     Cable(random.choice(cable_types), random.choice(far_rooms))
@@ -237,7 +237,10 @@ VERBS = {
     'east' : Direction('east'),
     'west' : Direction('west'),
     'up'   : Direction('up'),
-    'down' : Direction('down')
+    'down' : Direction('down'),
+    'ask' : Ask(),
+    'email' : Email(),
+    'directory' : Directory()
 }
 
 def dispVerbs():
@@ -258,11 +261,41 @@ def read_player_input ():
 
 SAME_ROUND = 1
 NEXT_ROUND = 2  
+
+def intro():
+    print ('Riccardo is a computing professor at Olin College. He leads a tough life.  The two are related.')
+    enter()
+    print('It\'s 9:00 AM.  Riccardo has not had his morning coffee.  However, he has prepared perhaps the best slideshow of his career.  It is his masterpiece, his magnum opus.  His David. His Mona Lisa.')
+    print('To go with it, he has prepared a lecture that both Faulker and Hemingway would agree to envy.')
+    enter()
+    print('He gets to the classroom and fires up The Mainframe, his trusty computer. Though it has seen years of strife, it\'s scarred screen whirrs into life.')
+    print('As eager students filter in, Riccardo pulls up Powerpoint, a silent tear appearing to commemorate its beauty. And then...')
+    enter()
+    print('The HDMI? The DVI? The VGA? SOMETHING! ANYTHING WILL DO. Give me a marker and I\'ll draw it if I have to!!!')
+    print('Riccardo frantically searches to no avail. Alas, without a cable, the presentation cannot begin. The students gaze down anxiously as Riccardo begins to sob. Many edge out the door.')
+    enter()
+    print('One student remains behind. Gregleston steps forward and says, "Riccardo! It\'s alright. I saw a cable just the other day. I don\'t know where it is now, but it can\'t have gotten far! You can save the class, I BELIEVE IN YOU!"')
+    enter()
+    print('Riccardo\'s sobbing ceases. He dries his eyes with a brusque swipe of the sleeve. Standing boldly, he draws upon his years of teaching to lend him resolve. He quickly recalls the travails of the past, and how his superlative email and questioning abilities have steered him through similar trials. He knows the dangers. He knows the stakes. Thus begins the tale of...')
+    enter()
+    print(' _____  _                       _          ____                  _   ')
+    print('|  __ \(_)                     | |        / __ \                | |      ')
+    print('| |__) |_  ___ ___ __ _ _ __ __| | ___   | |  | |_   _  ___  ___| |_     ')
+    print('|  _  /| |/ __/ __/ _` | \'__/ _` |/ _ \  | |  | | | | |/ _ \/ __| __|    ')
+    print('| | \ \| | (_| (_| (_| | | | (_| | (_) | | |__| | |_| |  __/\__ \ |_     ')
+    print('|_|  \_\_|\___\___\__,_|_|  \__,_|\___/   \___\_\\__,_|\___||___/\__|    ')
+                                                                     
+
+def enter():
+    print('')
+    input('Press \'Enter\' to continue...')
+    print('')
+
   
 def main ():
     
     print('RiccardoQuest, version 1 (Fall 2014)\n')
-
+    intro()
     # Create the world
     create_world()
     Player.clock.register(print_tick_action, 0)

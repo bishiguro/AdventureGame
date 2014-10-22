@@ -17,15 +17,15 @@ class Student(NPC):
         return Student._all_students[student_name].email()
 
     @staticmethod
-    def email_all_students(self):
-        sender.location().report("Even as you hit the send button, " +
-                                 "you feel the combined wroth of the student body " +
-                                 "roll over you, so malevolently that it actually hurts.")
+    def email_all_students():
+        Player.me.report("Even as you hit the send button, " +
+                         "you feel the combined wroth of the student body " +
+                         "roll over you, so malevolently that it actually hurts.")
         Player.me.suffer(1)
 
         email_list = []
-        for student in Student._all_students:
-            response = Student.email(student)
+        for s in Student._all_students:
+            response = Student._all_students[s].email()
             if response:
                 email_list.append(response)
 
