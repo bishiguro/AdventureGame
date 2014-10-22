@@ -15,6 +15,7 @@ from trollhunter import TrollHunter
 from babybutterfly import BabyButterfly
 from cable import Cable
 from riccardo import Riccardo
+from student import Student
 
 REVERSE = {
     'north' : 'south',
@@ -25,7 +26,6 @@ REVERSE = {
     'down' : 'up'
 }
 
-
 # add an exit in 'fr' toward 'to' in direction 'dir'
 def connect (fr,dir,to):
     fr.exits()[dir] = to
@@ -35,8 +35,6 @@ def connect (fr,dir,to):
 def biconnect (fr,dir,to):
     connect(fr,dir,to)
     connect(to,REVERSE[dir],fr)
-
-
 
 def create_world ():
 
@@ -83,7 +81,6 @@ def create_world ():
     parcelb = Room('Parcel B', 'The brilliant colors and peaceful quiet lure you into a meditative state.')
     bajatrack = Room('Baja Track')
     trebuchet = Room('Trebuchet')
-    elephantbones = Room('Elephant Bones')
 
     biconnect(oval, 'west',  ac1st)
 
@@ -122,7 +119,6 @@ def create_world ():
     biconnect(greatlawn, 'south', parcelb)
     biconnect(parcelb, 'south', bajatrack)
     biconnect(bajatrack, 'south', trebuchet)
-    biconnect(parcelb, 'west', elephantbones)
 
     # Anti-Social Elevator
     biconnect(wh1l, 'west', stairsw1)
@@ -170,21 +166,28 @@ def create_world ():
         Homework(homework,
                  random.choice(Room.rooms))
 
-    students = ['Frankie Freshman',
-                'Joe Junior',
-                'Sophie Sophomore',
-                'Cedric Senior']
-
-    for student in students:
-        NPC(student,
-            random.choice(Room.rooms),
-            random.randint(1, 5),
-            random.randint(1, 5))
+    cypress = Student("Cypress", random.choice(Room.rooms))  
+    bonbon = Student("Bonskilaylay", random.choice(Room.rooms))
+    nick = Student("Nicholas", random.choice(Room.rooms))
+    shrinidhi = Student("Shrinidhi", random.choice(Room.rooms))
+    zach = Student("Zach", random.choice(Room.rooms))
+    greg = Student("Gregleston", random.choice(Room.rooms))
+    haley = Student("Haley", random.choice(Room.rooms))
+    chelsea = Student("Chelsea", random.choice(Room.rooms))
+    philip = Student("Philip", random.choice(Room.rooms))
+    alex = Student("Alex", random.choice(Room.rooms))
+    jazmin = Student("Jazmin", random.choice(Room.rooms))
+    radmer = Student("Radmer", random.choice(Room.rooms))
+    brendan = Student("Brendan", random.choice(Room.rooms))
+    tom = Student("Tom", random.choice(Room.rooms))
+    allison = Student("Allison", random.choice(Room.rooms))
+    jack = Student("Jack", random.choice(Room.rooms))
+    ben = Student("Ben", random.choice(Room.rooms))
 
     trolls = ['Polyphemus',
               'Gollum',
               'Internet-Troll',
-              'Alternate-Ricardo']
+              'Alternate-Riccardo']
 
     for troll in trolls:
       Troll(troll,
@@ -254,8 +257,7 @@ NEXT_ROUND = 2
   
 def main ():
     
-    print('Olinland, version 1.4 (Fall 2014)\n')
-
+    print('RiccardoQuest, version 1 (Fall 2014)\n')
 
     # Create the world
     create_world()
@@ -273,7 +275,7 @@ def main ():
                 Player.clock.tick()
                 Player.me.look_around()
         else:
-            print('What??')
+            print('What?')
 
 
 if __name__ == '__main__':

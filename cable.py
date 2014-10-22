@@ -13,8 +13,9 @@ class Cable (MobileThing):
 		if actor._location.has_type(RiccardoComputer):
 			actor.say("I finally have the correct cable! Time to finish this lecture.")
 			actor.lecture()
+			actor._location.report('')
 			exit()
 		elif actor._location.has_type(Computer):
 			actor.say("This is not MY computer. Let's head back to class.")
 		else:
-			actor.say("I don't see a computer in this room.")     
+			actor.say("I don't see a computer in this room.")

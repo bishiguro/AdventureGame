@@ -148,7 +148,7 @@ class Student(NPC):
         self._cable_info = (owner, self.location())
 
     def destroy(self):
-        Student._all_students.remove(self)
+        del Student._all_students[self.name()]
         super(Student, self).destroy()
 
 
