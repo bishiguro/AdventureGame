@@ -7,7 +7,7 @@ class Cable (MobileThing):
 
 	def __init__ (self,name,loc):
 		self.desc = "The elusive {} cable".format(name)
-		MobileThing.__init__(self,name,loc,self.desc)
+		MobileThing.__init__(self,name,loc,desc=self.desc,takeable=True)
 
 	def use(self, actor):
 		if actor._location.has_type(RiccardoComputer):

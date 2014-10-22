@@ -6,7 +6,7 @@ import person
 class Radar (MobileThing):
 
     def __init__ (self,name,loc):
-        MobileThing.__init__(self,name,loc)
+        MobileThing.__init__(self,name,loc,takeable=True)
 
     def use (self,actor):
         actor.say('I fiddle with the buttons on ' + self.name());

@@ -3,9 +3,13 @@ import person
 
 class MobileThing (Thing):
 
-    def __init__ (self,name,loc,desc="Light enough to take..."):
+    def __init__ (self,name,loc,desc="Light enough to take...", takeable=False):
         Thing.__init__(self,name,loc,desc)
         self._original_location = loc
+        self._takeable = takeable
+
+    def takeable(self):
+        return self._takeable
 
     def take (self, actor):
         self._location.lose(self, actor)
