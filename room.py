@@ -46,7 +46,7 @@ class Room (WObject): #,Container):
                 return True
         return False
 
-    def have_thing(self, t):
+    def have_thing(self,t):
         for c in self.contents():
             if c is t:
                 return True

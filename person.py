@@ -1,4 +1,5 @@
 from mobile import *
+from cable import Cable
 import player
 
 class Person (MobileThing):    # Container...
@@ -50,12 +51,17 @@ class Person (MobileThing):    # Container...
     def stuff_around (self):
         return [x for x in self.location().contents() if not x.is_person()]
 
+    def peek_around (self):
+        """
+        Returns everything at a loction even if it is
+        in another person's inventory.
+        """
 
-    # this function should return everything that everyone in the
-    # same location as this person are holding/carrying
+        everything = self.stuff_around()
+        for person in people_around:
+            everything.extend(person.contents)
 
-    def peek_around (self): # FINISH
-        return self._contents
+        return everything
 
     def lose (self,t,loseto):
         self.say('I lose ' + t.name())
@@ -95,6 +101,18 @@ class Person (MobileThing):    # Container...
         people = self.people_around()
         if people:
             self.say('Hi ' + ', '.join([x.name() for x in people]))
+
+        if self.has_cable():
+            for person in people:
+                if isinstance(person, Student):
+                    person.cableNotify(self)
+
+    def has_cable(self):
+        for c in contents:
+            if isinstance(c, Cable):
+                return True
+
+        return False
 
     def leave_room (self):
         pass   # do nothing to reduce verbiage
