@@ -7,26 +7,20 @@ class MobileThing (Thing):
         Thing.__init__(self,name,loc,desc)
         self._original_location = loc
 
-    def take (self,actor):
-        actor.add_thing(self)
-        self._location.del_thing(self)
-        self._location = actor
+    def take (self, actor):
+        self._location.lose(self, actor)
 
     def drop (self,actor):
-        if actor.have_thing(self):
-            actor.del_thing(self)
-            actor._location.add_thing(self)
-            self._location = actor.location()
-        else:
-            actor.say(actor.name(),'is not carrying',self.name())
+        self.move(actor.location())
 
     def give (self,actor,target):
-
-        if isinstance(target, person.Person):
-            actor.del_thing(self)
-            self._location = target
+        # if isinstance(target, person.Person):
+        response = target.accept(self,actor)
+        if response:
             actor.say('I give {} to {}'.format(self.name(), target.name()))
-            target.accept(self,actor)
+            target.say(response)
+            self.move(target)
+            
 
     def move (self,loc):
         self.location().del_thing(self)

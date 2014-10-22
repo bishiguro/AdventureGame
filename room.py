@@ -31,6 +31,9 @@ class Room (WObject): #,Container):
         elif Player.god_mode:
             print('(At', self.name(), msg+')')
 
+    def lose (self,t,loseto):
+        t.move(loseto)
+
     def broadcast (self,msg):
         print(msg)
 

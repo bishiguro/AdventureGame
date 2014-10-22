@@ -82,9 +82,9 @@ class Wait (Verb):
 class Inventory(Verb):
 
     def action0(self):
-        inv = Player.me.peek_around()
+        inv = Player.me.contents()
         if inv:
-            Player.me.say(', '.join(thing.name() for thing in Player.me.peek_around()))
+            Player.me.say(', '.join(thing.name() for thing in inv))
         else:
             Player.me.say("Inventory empty.")
         return SAME_ROUND
@@ -107,11 +107,14 @@ class Use (Verb):
         return SAME_ROUND
 
 
-
 class Take (Verb):
 
     def action1 (self,obj):
-        obj.take(Player.me)
+        if not obj in Player.me.contents():
+            obj.take(Player.me)
+        else:
+            Player.me.say("I already have {}".format(obj.name()))
+
         return SAME_ROUND
 
 class Drop (Verb):
@@ -126,5 +129,8 @@ class Drop (Verb):
 class Give (Verb):
 
     def action2 (self,obj1,obj2):
-        obj1.give(Player.me,obj2)
+        if isinstance(obj2, Person):
+            obj1.give(Player.me,obj2)
+        else:
+            Player.me.say("I can't give an object to {}.".format(obj2.name()))
         return SAME_ROUND

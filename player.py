@@ -21,14 +21,12 @@ class Player (Person):
     # the place, or in the possession of a person at the place.
 
     def thing_named (self,name):
-        for x in self.location().contents():
-            if x.name() == name:
-                return x
+        everything = self.peek_around()
+        everything.extend(self.contents())
         
-        for x in self.peek_around():
+        for x in everything:
             if x.name() == name:
                 return x
-        return None
 
     def look_around (self):
         def names (lst):

@@ -103,9 +103,9 @@ def create_world ():
     Thing('lovely-trees', oval, "Just enough above you to huff haugtily in the wind as you approach.")
     MobileThing('cs-book', oval)
     MobileThing('math-book', oval, 'Just say no.')
-    Computer('hal-9000', ac113, "I can't let you do that, Riccardo.")
+    Computer('hal-9000', wh2l, "I can't let you do that, Riccardo.")
     Computer('johnny-5', easth, 'Inpuuuuuuuuuut!')
-    RiccardoComputer('Riccardo\'s Main Frame', ac113, 'If only you had a cable...')
+    RiccardoComputer('The Mainframe', ac113, 'If only you had a cable...')
 
     # Better things.
     Thing('adequate-trees', oval, "The kind of trees you hang out with, but don't really want to have over for family dinner.")

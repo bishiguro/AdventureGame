@@ -19,7 +19,7 @@ class Papillon (NPC):
 	def move_somewhere (self):
 		loc = self.location()
 		if isinstance(loc, Person):
-			loc.location().report(self.name()+' lifts off of ' + loc.name() + '\'s hand.')
+			loc.report(self.name()+' lifts off of ' + loc.name() + '\'s hand.')
 			self.move(loc.location())
 		else:
 			exits = loc.exits()

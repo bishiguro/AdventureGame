@@ -14,7 +14,7 @@ class Person (MobileThing):    # Container...
         return self._contents
 
     def have_thing (self,t):
-        for c in self.peek_around():
+        for c in self.contents():
             if c is t:
                 return True
         return False
@@ -34,15 +34,13 @@ class Person (MobileThing):    # Container...
         self._health = self._maxHealth
 
     def say (self,msg):
-        loc = self.location()
-        loc.report(self.name()+' says -- '+msg)
+        self.report(self.name()+' says -- '+msg)
+
+    def report(self, msg):
+        self._location.report(msg)
 
     def have_fit (self):
         self.say('Yaaaaah! I am upset!')
-
-    def drop_contents(self):
-        for item in self.contents():
-            item._location = self.location()
 
     def people_around (self):
         return [x for x in self.location().contents()
@@ -58,8 +56,8 @@ class Person (MobileThing):    # Container...
         """
 
         everything = self.stuff_around()
-        for person in people_around:
-            everything.extend(person.contents)
+        for person in self.people_around():
+            everything.extend(person.contents())
 
         return everything
 
@@ -93,6 +91,10 @@ class Person (MobileThing):    # Container...
 
     def die (self):
         self.location().broadcast('An earth-shattering, soul-piercing scream is heard...')
+
+        for item in self.contents():
+            item.drop(self)
+
         if player.Player.god_mode:
             print("{} has died.".format(self.name()))
         self.destroy()
@@ -108,7 +110,7 @@ class Person (MobileThing):    # Container...
                     person.cableNotify(self)
 
     def has_cable(self):
-        for c in contents:
+        for c in self._contents:
             if isinstance(c, Cable):
                 return True
 
@@ -117,19 +119,17 @@ class Person (MobileThing):    # Container...
     def leave_room (self):
         pass   # do nothing to reduce verbiage
 
-    def take (self,actor):
-        actor.say('I am not strong enough to just take '+self.name())
+    def take (self, actor):
+        actor.say('I am not strong enough to just take ' + self.name())
 
-    def drop (self,actor):
-        print(actor.name(),'is not carrying',self.name())
+    #def drop (self,actor):
+    #    print(actor.name(),'is not carrying',self.name())
 
-    def give (self,actor,target):
-        print(actor.name(),'is not carrying',self.name())
+    # def give (self,actor,target):
+    #     print(actor.name(),'is not carrying',self.name())
         
     def accept (self,obj,source):
-        
-        self.add_thing(obj)
-        self.say('Thanks, ' + source.name())
+        return 'Thanks, {}'.format(source.name())
 
     def is_person (self):
         return True

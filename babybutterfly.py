@@ -24,6 +24,10 @@ class BabyButterfly(MobileThing):
 
         else:
             self.state = state(self)
+            self.desc = self.state.desc()
+
+    def desc(self):
+        return self.state.desc()
 
     def grow(self, time):
         self.state.grow()
@@ -42,17 +46,13 @@ class ButterflyState:
         return self._desc
 
     def grow(self):
-        #print("Manager: {}".format(type(self._manager)))
         self._grow_time -= 1
         if self._grow_time <= 0:
-            self.notify("{} {}".format(self._manager.name(), self._message))
+            self.report("{} {}".format(self._manager.name(), self._message))
             self._manager.changeState(self._next_stage)
 
-    def notify(self, notification):
-        loc = self._manager.location()
-        if isinstance(loc, Person):
-            loc = loc.location()
-        loc.report(notification)
+    def report(self, notification):
+        self._manager.location().report(notification)
 
 
 class Caterpillar(ButterflyState):

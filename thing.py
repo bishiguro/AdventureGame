@@ -13,11 +13,11 @@ class Thing (WObject):
     def take (self,actor):
         actor.say("I can't take that I'm afraid.")
 
-    def drop (self,actor):
-        actor.say("I don't have that in my inventory.")
+    # def drop (self,actor):
+    #     actor.say("I don't have that in my inventory.")
 
-    def give (self,actor,target):
-        actor.say("I can't give something I don't have!")
+    # def give (self,actor,target):
+    #     actor.say("I can't give something I don't have!")
 
     def use (self,actor):
         actor.say('I try to use '+self.name()+' but nothing happens')
@@ -41,7 +41,4 @@ class Thing (WObject):
         else:
             output = "Your run-of-the-mill " + self.name() + "."
 
-        if isinstance(self._location, room.Room):
-            self._location.report(output)
-        elif isinstance(self._location, person.Person):
-            self._location._location.report(output)
+        self._location.report(output)

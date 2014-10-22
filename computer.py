@@ -7,7 +7,7 @@ class Computer (Thing):
         Thing.__init__(self, name, loc, desc)
 
     def use(self, actor):
-        inv = actor.peek_around()
+        inv = actor.contents()
         used = False
         for item in inv:
             if item.is_homework() and not item.done():
@@ -24,7 +24,7 @@ class RiccardoComputer (Computer):
         Computer.__init__(self, name, loc, desc)
 
     def use(self, actor):
-        if self.has_cable():
+        if actor.has_cable():
             actor.say("A cable for my computer! I can finally connect to this projector.")
             actor.lecture()
             exit()
