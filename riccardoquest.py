@@ -284,16 +284,15 @@ def intro():
     print('|  _  /| |/ __/ __/ _` | \'__/ _` |/ _ \  | |  | | | | |/ _ \/ __| __|    ')
     print('| | \ \| | (_| (_| (_| | | | (_| | (_) | | |__| | |_| |  __/\__ \ |_     ')
     print('|_|  \_\_|\___\___\__,_|_|  \__,_|\___/   \___\_\\__,_|\___||___/\__|    ')
-                                                                     
+
 
 def enter():
     print('')
     input('Press \'Enter\' to continue...')
     print('')
 
-  
-def main ():
-    
+
+def main():
     print('RiccardoQuest, version 1 (Fall 2014)\n')
     intro()
     # Create the world

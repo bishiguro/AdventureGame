@@ -4,7 +4,7 @@ from mobile import *
 class Homework (MobileThing):
 
     def __init__(self, name, loc):
-        MobileThing.__init__(self, name, loc)
+        MobileThing.__init__(self, name, loc,takeable=True)
         self._done = False
 
     def use(self, actor):

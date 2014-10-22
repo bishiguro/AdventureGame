@@ -10,7 +10,7 @@ class BabyButterfly(MobileThing):
 
     def __init__(self, name, loc):
         self.state = Caterpillar(self)
-        super(BabyButterfly, self).__init__(name, loc, self.state.desc())
+        super(BabyButterfly, self).__init__(name, loc, desc=self.state.desc(),takeable=True)
         player.Player.clock.register(self.grow, 5)
 
     def changeState(self, state):

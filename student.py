@@ -102,7 +102,6 @@ class Student(NPC):
 
     def tryTakeCable(self, target):
         if random.randint(1, 5) <= self._techy:
-            print(self.name() + " takes the cable")
             target.take(self)
             return True
 
