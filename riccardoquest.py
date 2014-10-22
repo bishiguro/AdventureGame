@@ -14,6 +14,7 @@ from badninja import *
 from trollhunter import TrollHunter
 from babybutterfly import BabyButterfly
 from cable import Cable
+from riccardo import Riccardo
 
 REVERSE = {
     'north' : 'south',
@@ -94,7 +95,8 @@ def create_world ():
 
     # The player is the first 'thing' that has to be created
 
-    Player('Blubbering-Fool', oval)
+    #Player('Blubbering-Fool', oval)
+    Riccardo('Riccardo', oval)
 
     Radar('handy radar', mh353)
     Thing('blackboard', ac113)
@@ -118,7 +120,7 @@ def create_world ():
     Computer('the phoenix box', wh3l, "The computer other computers wish they could be. Besides, re-images are basically beauty sleep.")
     Computer('space sphere', ac1st, "Wanna go to space! Space. Space. Space. Wanna go to space.")
 
-    Professor('Riccardo', mh353, random.randint(1, 5), 2)
+    #Professor('Riccardo', mh353, random.randint(1, 5), 2)
 
     homeworks = ['hw-1',
                  'hw-2',

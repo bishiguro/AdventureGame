@@ -24,9 +24,9 @@ class RiccardoComputer (Computer):
         Computer.__init__(self, name, loc, desc)
 
     def use(self, actor):
-        if actor.has_type(Cable):
+        if self.has_cable():
             actor.say("A cable for my computer! I can finally connect to this projector.")
-            # actor.lecture()
+            actor.lecture()
             exit()
         else:
             actor.say("I need a cable to connect to the projector.")
