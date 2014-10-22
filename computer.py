@@ -17,3 +17,16 @@ class Computer (Thing):
 
         if not used:
             actor.say("You browse Bookface to see what the friends you don't have are up to.")
+
+class RiccardoComputer (Computer):
+
+    def __init__(self, name, loc, desc="Riccardo's computer."):
+        Computer.__init__(self, name, loc, desc)
+
+    def use(self, actor):
+        if actor.has_type(Cable):
+            actor.say("A cable for my computer! I can finally connect to this projector.")
+            # actor.lecture()
+            exit()
+        else:
+            actor.say("I need a cable to connect to the projector.")
