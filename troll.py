@@ -4,8 +4,8 @@ from player import Player
 
 class Troll (NPC):
 
-    def __init__(self, name, loc, restlessness, hunger):
-        NPC.__init__(self,name,loc,restlessness,10)
+    def __init__(self, name, loc, desc="Look out, it bites!", restlessness=3, hunger=10):
+        super(Troll, self).__init__(name,loc,desc,restlessness)
         self._hunger = hunger
         Player.clock.register(self.eat_people, 3)
 
