@@ -22,9 +22,9 @@ class Registry:
 
     def update(self, *args):
         for key in self._reg_list:
-            for item in self._reg_dict[key]:
-                if not self.remove(key, item):
-                    item(*args)
+                for item in self._reg_dict[key]:
+                    if not self.remove(key, item):
+                        item(*args)
 
     def remove(self, key, item):
         # Finds out if the owner of a method exists
@@ -34,7 +34,7 @@ class Registry:
             self._reg_dict[key].remove(item)
             if not self._reg_dict[key]:
                 del self._reg_dict[key]
-                bisect.bisect(self._reg_list, key)
+                self._reg_list.remove(key)
 
             return True
 

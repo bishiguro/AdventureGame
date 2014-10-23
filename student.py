@@ -83,12 +83,11 @@ class Student(NPC):
         return random.choice(choices)
 
     def enter_room(self):
+        super(Student, self).enter_room()
         if not self.has_cable():
             target = self.checkForCable()
             if target:
                 self.cableNotify(target)
-
-        super(Student, self).enter_room()
 
     def cableNotify(self, cable):
         if not self.tryTakeCable(cable):
