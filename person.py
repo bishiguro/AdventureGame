@@ -52,7 +52,7 @@ class Person (MobileThing):    # Container...
     def possessions(self):
         p = []
         for x in self.location().contents():
-            if x.is_person():
+            if x.is_person() and not x == player.Player.me:
                 p.extend(x.contents())
         return p
 

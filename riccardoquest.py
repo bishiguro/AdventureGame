@@ -133,7 +133,6 @@ def create_world ():
 
     #Player('Blubbering-Fool', oval)
     Riccardo('Riccardo', ac113)
-    Radar('handy radar', mh353)
     Thing('blackboard', ac113)
     Thing('lovely-trees', oval, "Just enough above you to huff haugtily in the wind as you approach.")
     MobileThing('cs-book', oval)
@@ -219,7 +218,7 @@ def create_world ():
     cable_types = ['HDMI', 'VGA', 'DVI', 'coaxial', 'marker']
     far_rooms = [eh4l, wels, aclab, parcelb]
 
-    Cable(random.choice(cable_types), random.choice(far_rooms))
+    Cable(random.choice(cable_types), ac113)#random.choice(far_rooms))
 
 
 VERBS = {

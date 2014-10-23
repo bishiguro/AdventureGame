@@ -41,17 +41,14 @@ class Player (Person):
 
         print('------------------------------------------------------------')
         print('You are in', loc.name())
-        print(desc)
+        if desc:
+            print(desc)
 
         if all_stuff:
             print('You see:', names(all_stuff))
-        else:
-            print('The room is empty')
 
         if people:
             print('You see:', names(people))
-        else:
-            print('You see no one around')
 
         if possessions:
             print('People have:', names(possessions))
