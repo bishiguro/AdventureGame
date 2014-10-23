@@ -41,6 +41,7 @@ class Student(NPC):
         second_ext = random.choice(Student._second_ext)
         domain = random.choice(Student._domains)
         self._email = "{}{}{}@{}".format(name, first_ext, second_ext, domain)
+        Player.me.clock.register(self.checkForCable, 4)
 
     def email(self):
         info = self.getInfo()
@@ -84,24 +85,22 @@ class Student(NPC):
 
     def enter_room(self):
         super(Student, self).enter_room()
-        if not self.has_cable():
-            target = self.checkForCable()
-            if target:
-                self.cableNotify(target)
+        self.checkForCable()
+
 
     def cableNotify(self, cable):
         if not self.tryTakeCable(cable):
             self.recordInfo(cable)
 
-    def checkForCable(self):
-        everything = self.peek_around()
-        for thing in everything:
-            if isinstance(thing, Cable):
-                return thing
+    def checkForCable(self, *args):
+        if not self.has_cable():
+            everything = self.peek_around()
+            for thing in everything:
+                if isinstance(thing, Cable):
+                    self.cableNotify(thing)
 
     def tryTakeCable(self, target):
         if random.randint(1, 5) <= self._techy:
-            
             target.take(self)
             self.say("Thanks, {}, this is just the cable I was looking for!".format(target.name()))
             return True
