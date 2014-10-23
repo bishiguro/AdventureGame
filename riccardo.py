@@ -18,6 +18,3 @@ class Riccardo (Player):
                 self.location().report(self.name()+' starts lecturing about '+random.choice(self._topics))
         else:
                 self.location().report(self.name()+' mutters to himself about '+random.choice(self._topics))
-
-    def accept(self, obj, source):
-        pass
