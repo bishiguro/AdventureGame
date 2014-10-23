@@ -218,7 +218,7 @@ def create_world ():
     cable_types = ['HDMI', 'VGA', 'DVI', 'coaxial']
     far_rooms = [eh4l, wels, aclab, parcelb]
 
-    Cable(random.choice(cable_types), ac113)#random.choice(far_rooms))
+    Cable(random.choice(cable_types), random.choice(far_rooms))
 
 
 VERBS = {
