@@ -101,9 +101,10 @@ class Student(NPC):
 
     def tryTakeCable(self, target):
         if random.randint(1, 5) <= self._techy:
-            
+            owner = target.location()
+            self.say("Thanks, {}, this is just the cable I was looking for!".format(owner.name()))
             target.take(self)
-            self.say("Thanks, {}, this is just the cable I was looking for!".format(target.name()))
+            self.move_somewhere()
             return True
 
     def add_thing(self, thing):
