@@ -133,7 +133,7 @@ def create_world ():
 
     #Player('Blubbering-Fool', oval)
     Riccardo('Riccardo', ac113)
-    Thing('blackboard', ac113)
+    Thing('blackboard', ac113, "Just better than whiteboards. Except for the asthma and screeching.")
     Thing('lovely-trees', oval, "Just enough above you to huff haugtily in the wind as you approach.")
     MobileThing('cs-book', oval)
     MobileThing('math-book', oval, 'Just say no.')
@@ -165,15 +165,15 @@ def create_world ():
         Homework(homework,
                  random.choice(Room.rooms))
 
-    cypress = Student("Cypress", random.choice(Room.rooms))  
-    bonbon = Student("Bonskilaylay", random.choice(Room.rooms))
-    nick = Student("Nick", random.choice(Room.rooms))
+    cypress = Student("Cypress", random.choice(Room.rooms),"Does he even go here?")  
+    bonbon = Student("Bonskilaylay", random.choice(Room.rooms), "BonBon? Bonskillet? Bonsai? The world may never know.")
+    nick = Student("Nick", random.choice(Room.rooms), "Ugh. Just step around that one.")
     shrinidhi = Student("Shrinidhi", random.choice(Room.rooms))
-    zach = Student("Zach", random.choice(Room.rooms))
-    greg = Student("Gregleston", ac113)
-    haley = Student("Haley", random.choice(Room.rooms))
-    chelsea = Student("Chelsea", random.choice(Room.rooms))
-    philip = Student("Philip", random.choice(Room.rooms))
+    zach = Student("Zach", random.choice(Room.rooms),"The main antagonist of RiccardoQuest.")
+    greg = Student("Gregleston", ac113, "Your steadfast, if distractable, sidekick. Holy Turing Machines Riccardo!")
+    haley = Student("Haley", random.choice(Room.rooms), "Wearing a onesie - it's always in style.")
+    chelsea = Student("Chelsea", random.choice(Room.rooms), "Singing to herself quietly.")
+    philip = Student("Philip", random.choice(Room.rooms),"Philip. Just Philip.")
     alex = Student("Alex", random.choice(Room.rooms))
     jazmin = Student("Jazmin", random.choice(Room.rooms))
     radmer = Student("Radmer", random.choice(Room.rooms))
@@ -191,8 +191,8 @@ def create_world ():
     for troll in trolls:
       Troll(troll,
             random.choice(Room.rooms),
-            random.randint(1, 3),
-            random.randint(1, 3))
+            restlessness=random.randint(1, 3),
+            hunger=random.randint(1, 3))
 
     troll_hunters = ['Mister Piggy',
                       'Angel']

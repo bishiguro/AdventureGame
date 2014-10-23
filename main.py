@@ -148,8 +148,8 @@ def create_world ():
     for troll in trolls:
       Troll(troll,
             random.choice(Room.rooms),
-            random.randint(1, 3),
-            random.randint(1, 3))
+            restlessness=random.randint(1, 3),
+            hunger=random.randint(1, 3))
 
     troll_hunters = ['Mister Piggy',
                       'Angel']
