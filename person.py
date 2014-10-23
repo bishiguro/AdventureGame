@@ -131,12 +131,6 @@ class Person (MobileThing):    # Container...
     def take (self, actor):
         actor.say('I am not strong enough to just take ' + self.name())
 
-    #def drop (self,actor):
-    #    print(actor.name(),'is not carrying',self.name())
-
-    # def give (self,actor,target):
-    #     print(actor.name(),'is not carrying',self.name())
-        
     def accept (self,obj,source):
         return 'Thanks, {}'.format(source.name())
 

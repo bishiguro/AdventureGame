@@ -18,10 +18,9 @@ class MobileThing (Thing):
         self.move(actor.location())
 
     def give (self,actor,target):
-        # if isinstance(target, person.Person):
-        response = target.accept(self,actor)
+        response = target.accept(self, actor)
         if response:
-            actor.say('I give {} to {}'.format(self.name(), target.name()))
+            actor.report('({} gives {} to {})'.format(actor.name(), self.name(), target.name()))
             target.say(response)
             self.move(target)
 

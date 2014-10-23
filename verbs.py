@@ -130,10 +130,10 @@ class Drop (Verb):
 class Give (Verb):
 
     def action2 (self,obj1,obj2):
-        if isinstance(obj2, Person):
+        if isinstance(obj2, Person) and isinstance(obj1, MobileThing) and obj1.takeable():
             obj1.give(Player.me,obj2)
         else:
-            Player.me.say("I can't give an object to {}.".format(obj2.name()))
+            Player.me.say("I can't give {} to {}.".format(obj1.name(), obj2.name()))
         return SAME_ROUND
 
 
