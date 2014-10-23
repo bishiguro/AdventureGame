@@ -154,17 +154,6 @@ def create_world ():
     Computer('the phoenix box', wh3l, "The computer other computers wish they could be. Besides, re-images are basically beauty sleep.")
     Computer('space sphere', ac1st, "Wanna go to space! Space. Space. Space. Wanna go to space.")
 
-    homeworks = ['hw-1',
-                 'hw-2',
-                 'hw-3',
-                 'hw-4',
-                 'hw-5',
-                 'hw-6']
-
-    for homework in homeworks:
-        Homework(homework,
-                 random.choice(Room.rooms))
-
     cypress = Student("Cypress", random.choice(Room.rooms))  
     bonbon = Student("Bonskilaylay", random.choice(Room.rooms))
     nick = Student("Nick", random.choice(Room.rooms))
