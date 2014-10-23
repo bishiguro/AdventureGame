@@ -215,7 +215,7 @@ def create_world ():
     for butterfly in butterflies:
         BabyButterfly(butterfly, random.choice(Room.rooms))
 
-    cable_types = ['HDMI', 'VGA', 'DVI', 'coaxial', 'marker']
+    cable_types = ['HDMI', 'VGA', 'DVI', 'coaxial']
     far_rooms = [eh4l, wels, aclab, parcelb]
 
     Cable(random.choice(cable_types), ac113)#random.choice(far_rooms))
